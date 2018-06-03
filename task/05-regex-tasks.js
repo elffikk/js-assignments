@@ -31,7 +31,7 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   return /\{[0-9A-F]{8}\-[0-9A-F]{4}\-[0-9A-F]{4}\-[0-9A-F]{4}\-[0-9A-F]{12}\}/i;
+   return /\{[0-9A-F]{8}(\-[0-9A-F]{4}){3}\-[0-9A-F]{12}\}/i;
 }
 
 
@@ -72,8 +72,7 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-//    return /([0-2]?\d{1,2}\.){3}[0-2]?\d{1,2}/gi;
-   throw new Error('Not implemented');
+   return /^([0-2]?\d{1,2}\.){3}[0-2]?\d{1,2}$/;
 }
 
 
@@ -92,7 +91,7 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   throw new Error('Not implemented');
+   return /([1-9]\d\d|\d[1-9]\d|\d\d[1-9])\-([1-9]\d|\d[1-9])\-([1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$/;
 }
 
 
@@ -106,7 +105,7 @@ function getRegexForSSN() {
  *  - Valid passwords will only be alphanumeric characters.
  *
  * @param {number} minLength
- * @return {Regex}
+ * @return {RegExp}
  *
  * @example
  *   let validator = getPasswordValidator(6);
@@ -117,7 +116,7 @@ function getRegexForSSN() {
  *   'Pa55'.match(validator) => false
  */
 function getPasswordValidator(minLength) {
-   throw new Error('Not implemented');
+   return new RegExp(`(?=[a-z0-9]*[A-Z])(?=[A-Z0-9]*[a-z])(?=[A-Za-z]*[0-9])(?=^[A-Za-z0-9]{${minLength},}$)`);
 }
 
 
