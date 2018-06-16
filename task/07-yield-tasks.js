@@ -105,11 +105,14 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    // yield root;
-    // for (let child of root.children) {
-    //     yield *depthTraversalTree(child);   
-    // }
-    throw new Error('Not implemented');
+    let a = [root];
+    while (a.length) {
+        let element = a.pop();
+        yield element;
+        if (element.children) {
+            a = a.concat(element.children.reverse());
+        }
+    }
 }
 
 
